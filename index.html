@@ -1,1 +1,72 @@
-Hello World
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CS416 Narrative Visualization Project</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+  
+<body>
+  <div class="page">
+    <h1>COVID-19 Global Trend Across World</h1>
+
+    <p>This visualization page aims to narratively show the trend of COVID-19 cases and deaths in Global and
+      the severity of each Country as of specific time. The data comes from the covid-19-date published by WHO,
+      including the cumulative global cases and deaths over time, and the country-wise cases and deaths as of each date.
+      The start date of the data is 2020-01-05, and as the time of WHO publishing COVID-19 report data, the end date in the
+      data is 2024-07-07.</p>
+
+    <div class="chart" id="line-chart-cases">
+      <h2 id="title">Global Total Cases/Deaths Trend Over Time</h2>
+      <p>The following chart represents the trend of COVID-19 cases over time. Hover the over the line to see more detail. </p>
+    </div>
+
+    <p>As visualized by the steelblue line chart above, the overall trend of the line is concave up and become steeper when
+      the infection is out of controlled for the most of the time. However, there's also some noticeable turning point that may convey interesting
+       information, for example, for the first half of the 2020, the trend indicates that the infection speed somehow becomes slower. And there is also a large
+       turning point at 2022-06 that turns the trend from fast increase to gradually slow down till the now.
+    </p>
+
+    <!-- Date Selection Bar -->
+    <div>
+      <h2 id="title">Global Total Cases and Death Distribution Across World</h2>
+      <p>The following charts show the distribution of COVID-19 cases (blue) and deaths (red) globally at a specific time. Hover your mouse over the bar to
+        see more detail. The default date represented by the chart is 2022-01-01. There is also date selection bar, feel free to select other dates to explore the changes of the distribution.
+        There is a 'Play' button that you can click to watch the trend from current date. It will repeat and start over from first report day until you Click the button again.
+        You can also choose different Country groups, which are grouped by first letters of the country names.
+      </p>
+      <div id="controls">
+        <label for="date-select">Select a Date:</label>
+        <input type="date" id="date-select">
+        <button id="play-btn">Play</button>
+        <div class="btn-group">
+          <label>Countries:</label>
+          <button id="group1-btn">A-C</button>
+          <button id="group2-btn">C-I</button>
+          <button id="group3-btn">I-N</button>
+          <button id="group4-btn">N-S</button>
+          <button id="group5-btn">S-Z</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="chart">
+      <div class="chart" id="bar-chart-cases"></div>
+    </div>
+
+    <div class="chart">
+      <div class="chart" id="bar-chart-deaths"></div>
+    </div>
+
+    <P>According to the bar charts above, it is noticeable that the countries with larger population that always have more cases and deaths
+      compared to other country. The trend growed fast during initial breakout before 2021 and got stabilized ever since 2022.
+    </P>
+
+    <div id="tooltip"></div>
+  </div>
+
+  <script src="run.js"></script>
+</body>
+
+</html>

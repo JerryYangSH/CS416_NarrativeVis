@@ -194,6 +194,7 @@ Promise.all([
         "Cook Islands"
     ];
 
+    let currentGroupId = 0;
     // Function to update the cases bar chart based on the selected date
     function updateCasesChart(selectedDate, groupId) {
         const filteredCasesData = casesData.find(d => d.date.getTime() === selectedDate.getTime());
@@ -280,7 +281,7 @@ Promise.all([
             .call(yAxisCases);
 
         svgCases.append("text")
-            .attr("x", width)
+            .attr("x", width + margin.left / 2)
             .attr("y", 0)
             .style("text-anchor", "middle")
             .text(selectedDate.toLocaleDateString());
@@ -374,7 +375,6 @@ Promise.all([
     // Set the default date
     let selectedDate = dateParser("2022-01-01");
     dateSelect.property("value", selectedDate.toISOString().slice(0, 10));
-    let currentGroupId = 0;
 
     // Initial update of the charts with the default date
     updateCasesChart(selectedDate, currentGroupId);
@@ -390,26 +390,31 @@ Promise.all([
 
     d3.select("#group1-btn").on("click", function () {
         clearup();
+        currentGroupId = 0;
         updateCasesChart(selectedDate, 0);
         updateDeathsChart(selectedDate, 0);
     });
     d3.select("#group2-btn").on("click", function () {
         clearup();
+        currentGroupId = 1;
         updateCasesChart(selectedDate, 1);
         updateDeathsChart(selectedDate, 1);
     });
     d3.select("#group3-btn").on("click", function () {
         clearup();
+        currentGroupId = 2;
         updateCasesChart(selectedDate, 2);
         updateDeathsChart(selectedDate, 2);
     });
     d3.select("#group4-btn").on("click", function () {
         clearup();
+        currentGroupId = 3;
         updateCasesChart(selectedDate, 3);
         updateDeathsChart(selectedDate, 3);
     });
     d3.select("#group5-btn").on("click", function () {
         clearup();
+        currentGroupId = 4;
         updateCasesChart(selectedDate, 4);
         updateDeathsChart(selectedDate, 4);
     });
